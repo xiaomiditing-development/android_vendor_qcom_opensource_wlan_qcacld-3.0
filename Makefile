@@ -13,7 +13,7 @@ M ?= $(shell pwd)
 
 ifeq ($(WLAN_ROOT),)
 # WLAN_ROOT must contain an absolute path (i.e. not a relative path)
-KBUILD_OPTIONS := WLAN_ROOT=$(shell cd $(KERNEL_SRC); readlink -e $(M))
+KBUILD_OPTIONS := WLAN_ROOT=/home/mohmd/crDroid/vendor/qcom/opensource/wlan/qcacld-3.0
 
 # MODNAME should be qca_cld3_wlan for helium based platform
 ifeq (qca_cld3, $(WLAN_CHIPSET))
@@ -29,7 +29,8 @@ KBUILD_OPTIONS += CONFIG_QCA_WIFI_2_0=1
 KBUILD_OPTIONS += $(WLAN_SELECT)
 KBUILD_OPTIONS += $(KBUILD_EXTRA) # Extra config if any
 endif
-
+KBUILD_OPTIONS := WLAN_ROOT=/home/mohmd/crDroid/vendor/qcom/opensource/wlan/qcacld-3.0
+WLAN_ROOT := /home/mohmd/crDroid/vendor/qcom/opensource/wlan/qcacld-3.0
 all:
 	$(MAKE) -C $(KERNEL_SRC) M=$(M) modules $(KBUILD_OPTIONS)
 
