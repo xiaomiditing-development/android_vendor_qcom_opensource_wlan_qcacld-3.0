@@ -108,10 +108,10 @@ endif # platform-sdk-version
 # Build wlan.ko as $(WLAN_CHIPSET)_wlan.ko
 ###########################################################
 # This is set once per LOCAL_PATH, not per (kernel) module
-KBUILD_OPTIONS := WLAN_ROOT=/home/mohmd/crDroid/vendor/qcom/opensource/wlan/qcacld-3.0
+KBUILD_OPTIONS := WLAN_ROOT=$(WLAN_BLD_DIR)/qcacld-3.0/$(LOCAL_SRC_DIR)
 KBUILD_OPTIONS += WLAN_COMMON_ROOT=cmn
-KBUILD_OPTIONS += WLAN_COMMON_INC=/home/mohmd/crDroid/vendor/qcom/opensource/qcacld-3.0/cmn
-KBUILD_OPTIONS += WLAN_FW_API=/home/mohmd/crDroid/vendor/qcom/opensource/wlan/fw-api
+KBUILD_OPTIONS += WLAN_COMMON_INC=$(WLAN_BLD_DIR)/qcacld-3.0/cmn
+KBUILD_OPTIONS += WLAN_FW_API=$(WLAN_BLD_DIR)/fw-api
 KBUILD_OPTIONS += WLAN_PROFILE=$(WLAN_PROFILE)
 KBUILD_OPTIONS += DYNAMIC_SINGLE_CHIP=$(DYNAMIC_SINGLE_CHIP)
 

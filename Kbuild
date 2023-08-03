@@ -1,5 +1,8 @@
 # We can build either as part of a standalone Kernel build or as
 # an external module.  Determine which mechanism is being used
+
+WLAN_ROOT := /home/mohmd/crDroid/vendor/qcom/opensource/wlan/qcacld-3.0
+
 ifeq ($(MODNAME),)
 	KERNEL_BUILD := y
 else
@@ -10,7 +13,7 @@ ifeq ($(KERNEL_BUILD), y)
 	# These are provided in external module based builds
 	# Need to explicitly define for Kernel-based builds
 	MODNAME := wlan
-	WLAN_ROOT := drivers/staging/qcacld-3.0
+	WLAN_ROOT := /home/mohmd/crDroid/vendor/qcom/opensource/wlan/qcacld-3.0
 	WLAN_COMMON_ROOT := cmn
 	WLAN_COMMON_INC := $(WLAN_ROOT)/$(WLAN_COMMON_ROOT)
 	WLAN_FW_API := $(WLAN_ROOT)/../fw-api/
@@ -28,7 +31,7 @@ WLAN_PLATFORM_INC ?= $(WLAN_ROOT)/../platform/inc
 ifeq ($(KERNEL_BUILD), n)
 ifneq ($(ANDROID_BUILD_TOP),)
       ANDROID_BUILD_TOP_REL := $(shell python -c "import os.path; print(os.path.relpath('$(ANDROID_BUILD_TOP)'))")
-      override WLAN_ROOT := $(ANDROID_BUILD_TOP_REL)/$(WLAN_ROOT)
+      override WLAN_ROOT := /home/mohmd/crDroid/vendor/qcom/opensource/wlan/qcacld-3.0
       override WLAN_COMMON_INC := $(ANDROID_BUILD_TOP_REL)/$(WLAN_COMMON_INC)
       override WLAN_FW_API := $(ANDROID_BUILD_TOP_REL)/$(WLAN_FW_API)
 endif
